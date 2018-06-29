@@ -1,5 +1,5 @@
 {
-  "name": "Drupal",
+  "name": "${envName}",
   "description": "Subutai Blueprint for Drupal Installation",
   "version": "1.0.0",
   "author": "https://github.com/crioto",
