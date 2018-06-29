@@ -5,7 +5,7 @@
   "author": "https://github.com/crioto",
   "containers": [ {
       "hostname": "www",
-      "template": "apache",
+      "template": "debian-stretch",
       "peer-criteria": "HTTP-GROUP",
       "size": "SMALL",
       "port-mapping": [
@@ -22,29 +22,31 @@
           "external-port": "4040"
         }
       ]
-    },
-    {
-      "hostname": "www",
-      "template": "mysql",
-      "peer-criteria": "HTTP-GROUP",
-      "size": "SMALL",
-      "port-mapping": [
-        {
-          "protocol": "http",
-          "domain": "mywebsite.envs.subutai.cloud",
-          "internal-port": "3306",
-          "external-port": "3306"
-        }
-      ]
     }
   ],
+  "ansible-configuration": {
+    "source-url": "https://github.com/crioto/drupal-subutai/archive/master.zip",
+    "ansible-playbook": "playbook.json",
+    "groups": [
+        {
+            "name": "drupal",
+            "hostnames": [
+                "${webContainerName}"
+            ]
+        }
+    ]
+  },
+  "user-variables": {
+    "webContainerName": {
+        "description": "Enter the container's hostname",
+        "type": "string",
+        "default": "domain",
+        "validation": "[a-zA-Z0-9]+"
+    }
+  },
   "peer-criteria": [ 
     {
       "name": "HTTP-GROUP",
-      "max-price": "25"
-    },
-    {
-      "name": "DB-GROUP",
       "max-price": "25"
     }
   ]
