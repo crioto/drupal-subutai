@@ -37,6 +37,12 @@
     ]
   },
   "user-variables": {
+    "envName": {
+        "description": "Enter name of the environment",
+        "type": "string",
+        "default": "domain",
+        "validation": "[a-zA-Z0-9]+"
+    },
     "webContainerName": {
         "description": "Enter the container's hostname",
         "type": "string",
