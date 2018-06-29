@@ -1,0 +1,57 @@
+{
+  "name": "Drupal",
+  "description": "Subutai Blueprint for Drupal Installation",
+  "version": "1.0.0",
+  "author": "https://github.com/crioto",
+  "containers": [ {
+      "hostname": "www",
+      "template": "apache",
+      "peer-criteria": "HTTP-GROUP",
+      "size": "SMALL",
+      "port-mapping": [
+        {
+          "protocol": "http",
+          "domain": "mywebsite.envs.subutai.cloud",
+          "internal-port": "80",
+          "external-port": "80"
+        },
+        {
+          "protocol": "tcp",
+          "domain": "mywebsite.envs.subutai.cloud",
+          "internal-port": "22",
+          "external-port": "4040"
+        }
+      ]
+    },
+    {
+      "hostname": "www",
+      "template": "mysql",
+      "peer-criteria": "HTTP-GROUP",
+      "size": "SMALL",
+      "port-mapping": [
+        {
+          "protocol": "http",
+          "domain": "mywebsite.envs.subutai.cloud",
+          "internal-port": "3306",
+          "external-port": "3306"
+        },
+      ]
+    }
+  ],
+  "peer-criteria": [ 
+    {
+      "name": "HTTP-GROUP",
+      "max-price": "5",
+      "avg-cpu-load": "50",
+      "min-free-ram": "128",
+      "min-free-disk-space": "10"
+    },
+    {
+      "name": "DB-GROUP",
+      "max-price": "5",
+      "avg-cpu-load": "50",
+      "min-free-ram": "128",
+      "min-free-disk-space": "10"
+    },
+  ]
+}
