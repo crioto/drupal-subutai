@@ -34,24 +34,18 @@
           "domain": "mywebsite.envs.subutai.cloud",
           "internal-port": "3306",
           "external-port": "3306"
-        },
+        }
       ]
     }
   ],
   "peer-criteria": [ 
     {
       "name": "HTTP-GROUP",
-      "max-price": "5",
-      "avg-cpu-load": "50",
-      "min-free-ram": "128",
-      "min-free-disk-space": "10"
+      "max-price": "25"
     },
     {
       "name": "DB-GROUP",
-      "max-price": "5",
-      "avg-cpu-load": "50",
-      "min-free-ram": "128",
-      "min-free-disk-space": "10"
-    },
+      "max-price": "25"
+    }
   ]
 }
