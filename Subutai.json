@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "author": "https://github.com/crioto",
   "containers": [ {
-      "hostname": "www",
+      "hostname": "${webContainerName}",
       "template": "debian-stretch",
       "peer-criteria": "HTTP-GROUP",
       "size": "SMALL",
