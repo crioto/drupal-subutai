@@ -11,7 +11,7 @@
       "port-mapping": [
         {
           "protocol": "http",
-          "domain": "drupal.envs.subutai.cloud",
+          "domain": "${envName}.envs.subutai.cloud",
           "internal-port": "80",
           "external-port": "80"
         }
@@ -20,7 +20,7 @@
   ],
   "ansible-configuration": {
     "source-url": "https://github.com/crioto/drupal-subutai/archive/master.zip",
-    "ansible-playbook": "playbook.json",
+    "ansible-playbook": "playbook.yml",
     "groups": [
         {
             "name": "drupal",
@@ -40,7 +40,7 @@
     "webContainerName": {
         "description": "Enter the container's hostname",
         "type": "string",
-        "default": "domain",
+        "default": "hostname",
         "validation": "[a-zA-Z0-9]+"
     }
   },

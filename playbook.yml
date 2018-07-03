@@ -1,0 +1,54 @@
+---
+
+- hosts: drupal
+  remote_user: root
+  tasks:
+  - name: Upgrading apt
+    apt:
+      update_cache: true
+      allow_unauthenticated: true
+      upgrade: true
+  - name: Installing nginx
+    apt:
+      name: nginx
+      allow_unauthenticated: true
+      update_cache: false
+  - name: Installing PHP
+    apt:
+      name: php7.0
+      allow_unauthenticated: true
+      update_cache: false
+  - name: Installing PHP CGI
+    apt:
+      name: php7.0-cgi
+      allow_unauthenticated: true
+      update_cache: false
+  - name: Installing MySQL PHP Module
+    apt:
+      name: php7.0-mysql
+      allow_unauthenticated: true
+      update_cache: false
+  - name: Installing MariaDB
+    apt:
+      name: mariadb-server
+      allow_unauthenticated: true
+      update_cache: false
+  - name: Installing python-mysqldb
+    apt:
+      name: install python-mysqldb
+      allow_unauthenticated: true
+      update_cache: false
+  - name: Creating database
+    mysql_db:
+      name: drupal
+      state: present
+      encoding: utf8
+  - name: Creating database user
+    mysql_user:
+      name: drupal
+      password: drupal
+      priv: drupal.*:ALL 
+  - name: Restarting nginx
+    service:
+      name: nginx
+      state: restarted
