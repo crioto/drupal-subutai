@@ -35,7 +35,7 @@
       update_cache: false
   - name: Installing python-mysqldb
     apt:
-      name: install python-mysqldb
+      name: python-mysqldb
       allow_unauthenticated: true
       update_cache: false
   - name: Creating database
