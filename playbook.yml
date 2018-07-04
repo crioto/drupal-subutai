@@ -58,7 +58,7 @@
       dest: /tmp/installer
       validate_certs: false
   - name: Installing Composer
-    shell: cat /tmp/installer | php -- --install-dir=/usr/local/bin
+    shell: cat /tmp/installer | php -- --install-dir=/usr/local/bin --disable-tls
     args:
       creates: /usr/local/bin/composer
   - name: Rename composer.phar to composer
