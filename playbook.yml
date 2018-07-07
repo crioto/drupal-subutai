@@ -70,3 +70,5 @@
       path: /usr/local/bin/composer
       mode: a+x
       state: file
+  - name: Installing Drush
+    shell: composer global require drush/drush:dev-master
